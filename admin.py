@@ -84,7 +84,13 @@ def Login():
 		def Download():
 			fobj = open("studentdetails.csv","w")
 			cobj = csv.writer(fobj)
-			cobj.writerow(['Regno','Student Name','Parent Name','Academic Year','Dept Name','Password'])
+			cobj.writerow(['Regno','Student Name','Parent Name','Academic Year','Dept Name','Gender'])
+			curobj .execute ('select * from student;')
+			data= curobj.fetchall ()
+			#print (list (data))
+			for i in data : 
+				cobj.writerow([i[0],i[1],i[2],i[3],i[4],i[5]])
+
 			fobj .close ()
 			messagebox .showinfo("Download","Thank you \n Download complete")
 			win2.destroy()
